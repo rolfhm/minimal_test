@@ -10,6 +10,4 @@ ecbuild_find_package(NAME loki)
 #
 #FetchContent_MakeAvailable(loki)
 
-add_subdirectory(idem)
 add_subdirectory(scc)
-add_subdirectory(scc-hoist)
