@@ -16,4 +16,8 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES NVHPC)
     set(CMAKE_Fortran_FLAGS ${CMAKE_Fortran_FLAGS} "-byteswapio -Mlarge_arrays -fast -acc=gpu -Minfo=accel,all,intensity,ccff -gpu=lineinfo,deepcopy -O3 -Mcuda -DUSE_ACC -DUSE_STACK -DUSE_DATAREGION")
 endif()
 
+ecbuild_add_executable( TARGET dwarf-acraneb2
+                        SOURCES ${acraneb_src}
+)
+
 add_subdirectory(loki-src)
