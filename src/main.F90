@@ -5,11 +5,12 @@ program main
 
   implicit none
 
-  integer(kind=jpim) :: nproma,nlev
+  integer(kind=jpim) :: nproma, nlev, nblock
 
   nproma=32
   nlev=87
+  nblock = 10
 
-  call wrapper(nproma, nlev)
+  call wrapper(nproma, nlev, nblock)
 
 end program main

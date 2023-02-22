@@ -1,4 +1,4 @@
-subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia)
+subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia, pqco2)
 
   use parkind1, only: jpim, jprb
   use yomcst,   only: rd, rv
@@ -12,13 +12,14 @@ subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia)
   integer(kind=jpim), intent(in) :: kfdia
   integer(kind=jpim), intent(in) :: ktdia
 
+  real(kind=jprb), intent(in) :: pqco2(klon,klev)
+
   integer(kind=jpim) :: jlon
 
   real(kind=jprb) :: znsor(klon)
   real(kind=jprb) :: zdelp(klon)
   real(kind=jprb) :: zdu(klon, 4)
   real(kind=jprb) :: zq(klon, klev)
-  real(kind=jprb) :: pqco2(klon,klev)
 
   do jlon=kidia,kfdia
     zdu(jlon,1)=2._jprb*zdelp(jlon)*zq(jlon,ktdia)
