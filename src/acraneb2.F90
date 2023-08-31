@@ -1,20 +1,18 @@
-subroutine acraneb2(klon, klev, kidia, kfdia, ktdia)
+subroutine acraneb2(mudobject)
 
-  use parkind1, only: jpim, jprb
+  use mudmod,  only: mudtype
 
   implicit none
 
-  integer(kind=jpim), intent(in) :: klon
-  integer(kind=jpim), intent(in) :: klev
+  type(mudtype), intent(inout) :: mudobject
 
-  integer(kind=jpim), intent(in) :: kidia
-  integer(kind=jpim), intent(in) :: kfdia
-  integer(kind=jpim), intent(in) :: ktdia
+  integer :: m, n
 
-  real(kind=jprb) :: pqco2(klon,klev)
+  associate(x => mudobject%miniobject%x, y => mudobject%miniobject%y)
 
-#include "acraneb_transt.intfb.h"
+    m = x
+    n = y
 
-  call acraneb_transt(klon, klev, kidia, kfdia, ktdia, pqco2)
+  end associate
 
 end subroutine acraneb2

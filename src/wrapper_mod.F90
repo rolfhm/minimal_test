@@ -2,31 +2,28 @@ module wrapper_mod
 
   contains
 
-  subroutine wrapper(klon, klev, kgpblk)
+  subroutine wrapper(kgpblk)
 
     use parkind1, only: jpim, jprb
+    use mudmod,   only: mudtype
 
     implicit none
 
-    integer(kind=jpim), intent(in) :: klon
-    integer(kind=jpim), intent(in) :: klev
     integer(kind=jpim), intent(in) :: kgpblk
 
-    integer(kind=jpim) :: kidia
-    integer(kind=jpim) :: kfdia
-    integer(kind=jpim) :: ktdia
+    type(mudtype) :: mudobject
 
-    integer(kind=jpim) :: jblk
+    integer :: jblk
+
 
 #include "acraneb2.intfb.h"
 
-    kidia = 1
-    kfdia = klon
-    ktdia = 1
+    mudobject%miniobject%x = 1
+    mudobject%miniobject%y = 2
 
     do jblk = 1, kgpblk
 
-      call acraneb2(klon, klev, kidia, kfdia, ktdia)
+      call acraneb2(mudobject)
 
     enddo
 
