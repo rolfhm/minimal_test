@@ -8,11 +8,7 @@ subroutine acraneb2(mudobject)
 
   integer :: m, n
 
-  associate(x => mudobject%miniobject%x, y => mudobject%miniobject%y)
-
-    m = x
-    n = y
-
-  end associate
+  m = mudobject%miniobject%x
+  n = mudobject%miniobject%y
 
 end subroutine acraneb2
