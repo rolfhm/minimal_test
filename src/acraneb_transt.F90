@@ -19,18 +19,19 @@ subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia, pqco2)
   real(kind=jprb) :: zq2(klon, klev)
   real(kind=jprb) :: zzz(klon, klev)
 
-  call delta_t(zq1(1:klon), zzz(1:klon, 1))
+  call delta_t(ktdia, zq1, zzz(1, 1))
 
   do jlev = ktdia, klev
-    call delta_t(zq2(1:klon,jlev), zzz(1:klon,jlev))
+    call delta_t(jlev, zq2(1,jlev), zzz(1,jlev))
   enddo
 
 contains
 
-subroutine delta_t(pq, pzz)
+subroutine delta_t(kl, pq, pzz)
 
   implicit none
 
+  integer(kind=jpim), intent(in) :: kl
   real(kind=jprb), intent(in) :: pq(klon)
   real(kind=jprb), intent(in) :: pzz(klon)
 
