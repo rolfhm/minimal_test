@@ -1,7 +1,6 @@
 subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia, pqco2)
 
   use parkind1, only: jpim, jprb
-  use yomcst,   only: rd, rv
 
   implicit none
 
@@ -14,25 +13,34 @@ subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia, pqco2)
 
   real(kind=jprb), intent(in) :: pqco2(klon,klev)
 
-  integer(kind=jpim) :: jlon
+  integer(kind=jpim) :: jlon, jlev
 
-  real(kind=jprb) :: znsor(klon)
-  real(kind=jprb) :: zdelp(klon)
-  real(kind=jprb) :: zdu(klon, 4)
-  real(kind=jprb) :: zq(klon, klev)
+  real(kind=jprb) :: zq1(klon)
+  real(kind=jprb) :: zq2(klon, klev)
+  real(kind=jprb) :: zzz(klon, klev)
 
-  do jlon=kidia,kfdia
-    zdu(jlon,1)=2._jprb*zdelp(jlon)*zq(jlon,ktdia)
-    zdu(jlon,2)=2._jprb*zdelp(jlon)*pqco2(jlon,ktdia)*(1._jprb-zq(jlon,ktdia))
-    zdu(jlon,3)=znsor(jlon)*(1._jprb-zq(jlon,ktdia))
-    zdu(jlon,4)=zdu(jlon,1)*rv*zq(jlon,ktdia)/(rd+(rv-rd)*zq(jlon,ktdia))
+  call delta_t(zq1(1:klon), zzz(1:klon, 1))
+
+  do jlev = ktdia, klev
+    call delta_t(zq2(1:klon,jlev), zzz(1:klon,jlev))
   enddo
 
-  do jlon=kidia,kfdia
-    zdu(jlon,1)=2._jprb*zdelp(jlon)*zq(jlon,ktdia)
-    zdu(jlon,2)=2._jprb*zdelp(jlon)*pqco2(jlon,ktdia)*(1._jprb-zq(jlon,ktdia))
-    zdu(jlon,3)=znsor(jlon)*(1._jprb-zq(jlon,ktdia))
-    zdu(jlon,4)=zdu(jlon,1)*rv*zq(jlon,ktdia)/(rd+(rv-rd)*zq(jlon,ktdia))
+contains
+
+subroutine delta_t(pq, pzz)
+
+  implicit none
+
+  real(kind=jprb), intent(in) :: pq(klon)
+  real(kind=jprb), intent(in) :: pzz(klon)
+
+  real(kind=jprb) :: x, y
+
+  do jlon = 1,klon
+    x = x + pq(jlon)
+    y = y + pzz(jlon)
   enddo
+
+end subroutine
 
 end subroutine acraneb_transt
