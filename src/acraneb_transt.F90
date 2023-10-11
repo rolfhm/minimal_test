@@ -1,4 +1,4 @@
-subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia, pqco2)
+subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia)
 
   use parkind1, only: jpim, jprb
 
@@ -11,18 +11,15 @@ subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia, pqco2)
   integer(kind=jpim), intent(in) :: kfdia
   integer(kind=jpim), intent(in) :: ktdia
 
-  real(kind=jprb), intent(in) :: pqco2(klon,klev)
-
   integer(kind=jpim) :: jlon, jlev
 
   real(kind=jprb) :: zq1(klon)
   real(kind=jprb) :: zq2(klon, klev)
-  real(kind=jprb) :: zzz(klon, klev)
 
   call delta_t(zq1)
 
   do jlev = ktdia, klev
-    call delta_t(zq2(1,jlev))
+    call delta_t(zq2(1:klon,jlev))
   enddo
 
 contains

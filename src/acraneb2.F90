@@ -11,10 +11,8 @@ subroutine acraneb2(klon, klev, kidia, kfdia, ktdia)
   integer(kind=jpim), intent(in) :: kfdia
   integer(kind=jpim), intent(in) :: ktdia
 
-  real(kind=jprb) :: pqco2(klon,klev)
-
 #include "acraneb_transt.intfb.h"
 
-  call acraneb_transt(klon, klev, kidia, kfdia, ktdia, pqco2)
+  call acraneb_transt(klon, klev, kidia, kfdia, ktdia)
 
 end subroutine acraneb2
