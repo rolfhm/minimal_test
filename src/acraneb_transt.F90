@@ -11,8 +11,9 @@ subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia)
   integer(kind=jpim), intent(in) :: kfdia
   integer(kind=jpim), intent(in) :: ktdia
 
-  integer(kind=jpim) :: jlon, jlev
+  integer(kind=jpim) :: jlon, jlev, i
 
+  real(kind=jprb) :: za
   real(kind=jprb) :: zq1(klon)
   real(kind=jprb) :: zq2(klon, klev)
 
@@ -30,12 +31,16 @@ subroutine delta_t(pq)
 
   real(kind=jprb), intent(in) :: pq(klon)
 
+  real(kind=jprb) :: za(klon,3)
+
   real(kind=jprb) :: x, z
 
   associate(zz => z)
 
-  do jlon = 1,klon
-    x = x + pq(jlon)
+  do i = 1,3
+    do jlon = 1,klon
+      za(jlon,i) = za(jlon,i) + pq(jlon)
+    enddo
   enddo
 
   end associate
