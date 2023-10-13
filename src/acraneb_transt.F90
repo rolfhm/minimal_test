@@ -34,7 +34,6 @@ subroutine delta_t(pq)
   real(kind=jprb) :: za(klon,3)
 
   real(kind=jprb) :: x, z
-  integer(kind=jpim) :: jlon
 
   associate(zz => z)
 
