@@ -20,17 +20,17 @@ subroutine acraneb_transt(klon, kidia, kfdia)
 
 contains
 
-subroutine delta_t(pq, lolo)
+subroutine delta_t(pq, lyly)
 
   implicit none
 
   real(kind=jprb), intent(in) :: pq(klon)
 
-  type(lolo), intent(in) :: lolo
+  type(lolo), intent(in) :: lyly
 
-  real(kind=jprb) :: za(klon,lolo%lulu)
+  real(kind=jprb) :: za(klon,lyly%lulu)
 
-  do i = 1,lolo%lulu
+  do i = 1,lyly%lulu
     do jlon = 1,klon
       za(jlon,i) = za(jlon,i) + pq(jlon)
     enddo
