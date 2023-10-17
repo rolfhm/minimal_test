@@ -1,6 +1,7 @@
 subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia)
 
   use parkind1, only: jpim, jprb
+  use xxx, only: blabla, bloblo
 
   implicit none
 
@@ -13,31 +14,35 @@ subroutine acraneb_transt(klon, klev, kidia, kfdia, ktdia)
 
   integer(kind=jpim) :: jlon, jlev, i
 
+  type(blabla) :: lala
+
   real(kind=jprb) :: za
   real(kind=jprb) :: zq1(klon)
   real(kind=jprb) :: zq2(klon, klev)
 
-  call delta_t(zq1)
+  call delta_t(zq1, lala%lolo)
 
   do jlev = ktdia, klev
-    call delta_t(zq2(1:klon,jlev))
+    call delta_t(zq2(1:klon,jlev), lala%lolo)
   enddo
 
 contains
 
-subroutine delta_t(pq)
+subroutine delta_t(pq, lolo)
 
   implicit none
 
   real(kind=jprb), intent(in) :: pq(klon)
 
-  real(kind=jprb) :: za(klon,3)
+  type(lolo), intent(in) :: lolo
+
+  real(kind=jprb) :: za(klon,lolo%lulu)
 
   real(kind=jprb) :: x, z
 
   associate(zz => z)
 
-  do i = 1,3
+  do i = 1,lolo%lulu
     do jlon = 1,klon
       za(jlon,i) = za(jlon,i) + pq(jlon)
     enddo
