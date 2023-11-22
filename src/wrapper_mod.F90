@@ -6,7 +6,11 @@ module wrapper_mod
 
     use parkind1, only: jpim, jprb
 
+    use model_physics_mf_mod , only : model_physics_mf_type
+
     implicit none
+
+    type(model_physics_mf_type) :: ydml_phy_mf
 
     integer(kind=jpim), intent(in) :: klon
     integer(kind=jpim), intent(in) :: klev
@@ -14,19 +18,16 @@ module wrapper_mod
 
     integer(kind=jpim) :: kidia
     integer(kind=jpim) :: kfdia
-    integer(kind=jpim) :: ktdia
-
     integer(kind=jpim) :: jblk
 
 #include "acraneb2.intfb.h"
 
     kidia = 1
     kfdia = klon
-    ktdia = 1
 
     do jblk = 1, kgpblk
 
-      call acraneb2(klon, klev, kidia, kfdia, ktdia)
+      call acraneb2(ydml_phy_mf, klon, klev, kidia, kfdia)
 
     enddo
 
