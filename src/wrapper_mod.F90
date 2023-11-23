@@ -18,18 +18,13 @@ module wrapper_mod
 
     integer(kind=jpim) :: kidia
     integer(kind=jpim) :: kfdia
-    integer(kind=jpim) :: jblk
 
-#include "acraneb2.intfb.h"
+#include "ac_cloud_model2.intfb.h"
 
     kidia = 1
     kfdia = klon
 
-    do jblk = 1, kgpblk
-
-      call acraneb2(ydml_phy_mf, klon, klev, kidia, kfdia)
-
-    enddo
+    call ac_cloud_model2(ydml_phy_mf%yrphy3, klon, klev, kidia, kfdia)
 
   end subroutine wrapper
 

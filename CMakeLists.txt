@@ -9,7 +9,7 @@ project(dwarf-acraneb2 LANGUAGES Fortran)
 ecbuild_list_add_pattern(LIST acraneb_src GLOB ${CMAKE_CURRENT_SOURCE_DIR}/src/*.F90)
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES GNU)
-    set(CMAKE_Fortran_FLAGS ${CMAKE_Fortran_FLAGS} "-fopenmp -fconvert=swap -Wall")
+    set(CMAKE_Fortran_FLAGS ${CMAKE_Fortran_FLAGS} "-fopenmp -fconvert=swap -Wall -fcray-pointer -ffree-line-length-512")
 endif()
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES NVHPC)
