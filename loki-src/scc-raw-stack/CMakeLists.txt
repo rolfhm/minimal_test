@@ -3,7 +3,7 @@ set( LOKI_FRONTEND "fp" CACHE STRING "Frontend parser for Loki transforms" )
 
 loki_transform(
     COMMAND convert
-    MODE scc-stack
+    MODE scc-raw-stack
     FRONTEND  ${LOKI_FRONTEND}
     CPP
     INLINE_MEMBERS
@@ -11,10 +11,10 @@ loki_transform(
     CONFIG   ${CMAKE_CURRENT_SOURCE_DIR}/../acraneb2-loki.config
     SOURCES  ${CMAKE_CURRENT_SOURCE_DIR}/../../src
     BUILDDIR ${CMAKE_CURRENT_BINARY_DIR}
-    OUTPUT  ac_cloud_model1.scc_stack.F90
-            ac_cloud_model2.scc_stack.F90
-            acraneb2.scc_stack.F90
-            wrapper_mod.scc_stack.F90
+    OUTPUT  ac_cloud_model1.scc_raw_stack.F90
+            ac_cloud_model2.scc_raw_stack.F90
+            acraneb2.scc_raw_stack.F90
+            wrapper_mod.scc_raw_stack.F90
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/../../src/ac_cloud_model1.F90
             ${CMAKE_CURRENT_SOURCE_DIR}/../../src/ac_cloud_model2.F90
             ${CMAKE_CURRENT_SOURCE_DIR}/../../src/acraneb2.F90
@@ -29,12 +29,12 @@ ecbuild_list_exclude_pattern(LIST loki_src REGEX ac_cloud_model1.F90
                                                  wrapper_mod.F90
 )
 
-set(loki_src ${CMAKE_CURRENT_BINARY_DIR}/ac_cloud_model1.scc_stack.F90
-             ${CMAKE_CURRENT_BINARY_DIR}/ac_cloud_model2.scc_stack.F90
-             ${CMAKE_CURRENT_BINARY_DIR}/acraneb2.scc_stack.F90
-             ${CMAKE_CURRENT_BINARY_DIR}/wrapper_mod.scc_stack.F90
+set(loki_src ${CMAKE_CURRENT_BINARY_DIR}/ac_cloud_model2.scc_raw_stack.F90
+             ${CMAKE_CURRENT_BINARY_DIR}/ac_cloud_model1.scc_raw_stack.F90
+             ${CMAKE_CURRENT_BINARY_DIR}/acraneb2.scc_raw_stack.F90
+             ${CMAKE_CURRENT_BINARY_DIR}/wrapper_mod.scc_raw_stack.F90
              ${loki_src})
 
-ecbuild_add_executable(TARGET dwarf-acraneb2-loki-scc-stack
+ecbuild_add_executable(TARGET dwarf-acraneb2-loki-scc-raw-stack
                        SOURCES ${loki_src})
 

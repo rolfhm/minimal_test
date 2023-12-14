@@ -1,4 +1,4 @@
-subroutine ac_cloud_model2(ydphy3, klon, klev, kidia, kfdia, pzz)
+subroutine ac_cloud_model1(ydphy3, klon, klev, kidia, kfdia)
 
     use parkind1 ,only: jpim     ,jprb
 
@@ -13,13 +13,10 @@ subroutine ac_cloud_model2(ydphy3, klon, klev, kidia, kfdia, pzz)
     integer(kind=jpim), intent(in) :: kidia
     integer(kind=jpim), intent(in) :: kfdia
 
-    real(kind=jprb), intent(in), dimension(klon, klev) :: pzz
-
     integer(kind=jpim) :: jb, jlev, jlon
 
     real(kind=jprb) :: zde1(klon, 0:klev, ydphy3%n_spband)
     real(kind=jprb) :: zde2(klon, klev, ydphy3%n_spband)
-    real(kind=jprb) :: zde3(klon, 1:klev)
 
     do jb = 1, ydphy3%n_spband
       do jlev = 1, klev
@@ -32,6 +29,4 @@ subroutine ac_cloud_model2(ydphy3, klon, klev, kidia, kfdia, pzz)
       enddo
     enddo
 
-    zde3(1:klon,1:klev) = pzz
-
-end subroutine ac_cloud_model2
+end subroutine ac_cloud_model1

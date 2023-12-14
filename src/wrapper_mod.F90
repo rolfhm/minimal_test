@@ -2,7 +2,7 @@ module wrapper_mod
 
   contains
 
-  subroutine wrapper(klon, klev, kgpblk)
+  subroutine wrapper(klon, klev, kgpblk, ydml_phy_mf)
 
     use parkind1, only: jpim, jprb
 
@@ -10,7 +10,7 @@ module wrapper_mod
 
     implicit none
 
-    type(model_physics_mf_type) :: ydml_phy_mf
+    type(model_physics_mf_type), intent(in) :: ydml_phy_mf
 
     integer(kind=jpim), intent(in) :: klon
     integer(kind=jpim), intent(in) :: klev
@@ -19,12 +19,20 @@ module wrapper_mod
     integer(kind=jpim) :: kidia
     integer(kind=jpim) :: kfdia
 
-#include "ac_cloud_model2.intfb.h"
+    integer(kind=jpim) :: jblk
+
+    real(kind=jprb), dimension(klon, klev) :: zzz
+
+#include "acraneb2.intfb.h"
 
     kidia = 1
     kfdia = klon
 
-    call ac_cloud_model2(ydml_phy_mf%yrphy3, klon, klev, kidia, kfdia)
+    do jblk = 1,kgpblk
+
+        call acraneb2(ydml_phy_mf%yrphy3, klon, klev, kidia, kfdia, zzz)
+
+    enddo
 
   end subroutine wrapper
 
