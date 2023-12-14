@@ -30,7 +30,7 @@ module wrapper_mod
 
     do jblk = 1,kgpblk
 
-        call acraneb2(ydml_phy_mf%yrphy3, klon, klev, kidia, kfdia, zzz)
+        call acraneb2(ydml_phy_mf, klon, klev, kidia, kfdia, zzz)
 
     enddo
 

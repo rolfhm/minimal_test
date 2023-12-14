@@ -20,6 +20,7 @@ subroutine acraneb2(ydml_phy_mf, klon, klev, kidia, kfdia, pzz)
 
   integer :: jlon, jlev
 
+#include "ac_cloud_model1.intfb.h"
 #include "ac_cloud_model2.intfb.h"
 
   do jlon =1, klon 
