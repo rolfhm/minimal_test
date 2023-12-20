@@ -24,6 +24,7 @@ subroutine ac_cloud_model2(ydphy3, klon, klev, kidia, kfdia, pzz)
 
     do jb = 1, ydphy3%n_spband
       zde1(:, 0, jb) = 0._jprb
+      zde2(:, :, jb) = 0._jprb
       do jlev = 1, klev
         do jlon = kidia, kfdia
   
