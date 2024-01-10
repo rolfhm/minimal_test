@@ -1,46 +1,46 @@
-MODULE PARKIND1
+module parkind1
 !
-!     *** Define usual kinds for strong typing ***
+!     *** define usual kinds for strong typing ***
 !
-IMPLICIT NONE
-SAVE
+implicit none
+save
 !
-!     Integer Kinds
+!     integer kinds
 !     -------------
 !
-INTEGER, PARAMETER :: JPIT = SELECTED_INT_KIND(2)
-INTEGER, PARAMETER :: JPIS = SELECTED_INT_KIND(4)
-INTEGER, PARAMETER :: JPIM = SELECTED_INT_KIND(9)
-INTEGER, PARAMETER :: JPIB = SELECTED_INT_KIND(12)
+integer, parameter :: jpit = selected_int_kind(2)
+integer, parameter :: jpis = selected_int_kind(4)
+integer, parameter :: jpim = selected_int_kind(9)
+integer, parameter :: jpib = selected_int_kind(12)
 
-!Special integer type to be used for sensative adress calculations
+!special integer type to be used for sensative adress calculations
 !should be *8 for a machine with 8byte adressing for optimum performance
-#ifdef ADDRESS64
-INTEGER, PARAMETER :: JPIA = JPIB
+#ifdef address64
+integer, parameter :: jpia = jpib
 #else
-INTEGER, PARAMETER :: JPIA = JPIM
+integer, parameter :: jpia = jpim
 #endif
 
 !
-!     Real Kinds
+!     real kinds
 !     ----------
 !
-INTEGER, PARAMETER :: JPRT = SELECTED_REAL_KIND(2,1)
-INTEGER, PARAMETER :: JPRS = SELECTED_REAL_KIND(4,2)
-INTEGER, PARAMETER :: JPRM = SELECTED_REAL_KIND(6,37)
-#ifdef PARKIND1_SINGLE
-INTEGER, PARAMETER :: JPRB = SELECTED_REAL_KIND(6,37)
+integer, parameter :: jprt = selected_real_kind(2,1)
+integer, parameter :: jprs = selected_real_kind(4,2)
+integer, parameter :: jprm = selected_real_kind(6,37)
+#ifdef parkind1_single
+integer, parameter :: jprb = selected_real_kind(6,37)
 #else
-INTEGER, PARAMETER :: JPRB = SELECTED_REAL_KIND(13,300)
+integer, parameter :: jprb = selected_real_kind(13,300)
 #endif
 
-! Double real for C code and special places requiring 
-!    higher precision. 
-INTEGER, PARAMETER :: JPRD = SELECTED_REAL_KIND(13,300)
+! double real for c code and special places requiring
+!    higher precision.
+integer, parameter :: jprd = selected_real_kind(13,300)
 
 
-! Logical Kinds for RTTOV....
+! logical kinds for rttov....
 
-INTEGER, PARAMETER :: JPLM = JPIM   !Standard logical type
+integer, parameter :: jplm = jpim   !standard logical type
 
-END MODULE PARKIND1
+end module parkind1

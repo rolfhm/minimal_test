@@ -1,6 +1,6 @@
 MODULE YOMCST
 
-USE PARKIND1  ,ONLY : JPRB
+USE PARKIND1, ONLY : JPRB
 
 IMPLICIT NONE
 
@@ -27,7 +27,7 @@ REAL(KIND=JPRB) :: RNAVO
 ! A1.1 Astronomical constants
 ! * RDAY         : duration of the solar day
 ! * RDAYI        : invariant time unit of 86400s
-! * RHOUR        : duration of the solar hour 
+! * RHOUR        : duration of the solar hour
 ! * REA          : astronomical unit (mean distance Earth-sun)
 ! * REPSM        : polar axis tilting angle
 ! * RSIYEA       : duration of the sideral year

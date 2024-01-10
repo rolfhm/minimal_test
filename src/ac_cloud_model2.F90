@@ -1,8 +1,8 @@
 subroutine ac_cloud_model2(ydphy3, klon, klev, kidia, kfdia, pzz)
 
-    use parkind1 ,only: jpim     ,jprb
+    use parkind1, only: jpim, jprb
 
-    use yomphy3  ,only : tphy3
+    use yomphy3, only: tphy3
 
     implicit none
 
@@ -27,10 +27,10 @@ subroutine ac_cloud_model2(ydphy3, klon, klev, kidia, kfdia, pzz)
       zde2(:, :, jb) = 0._jprb
       do jlev = 1, klev
         do jlon = kidia, kfdia
-  
+
           zde1(jlon, jlev, jb) = 1._jprb
           zde2(jlon, jlev, jb) = 0._jprb
-  
+
         enddo
       enddo
     enddo

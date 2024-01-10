@@ -1,8 +1,8 @@
 subroutine ac_cloud_model1(ydphy3, klon, klev, kidia, kfdia)
 
-    use parkind1 ,only: jpim     ,jprb
+    use parkind1, only: jpim, jprb
 
-    use yomphy3  ,only : tphy3
+    use yomphy3, only: tphy3
 
     implicit none
 

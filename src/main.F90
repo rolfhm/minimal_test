@@ -1,6 +1,6 @@
 program main
 
-  use parkind1, only : jpim
+  use parkind1, only: jpim
   use wrapper_mod, only: wrapper
   use model_physics_mf_mod , only : model_physics_mf_type
 

@@ -2,7 +2,7 @@ subroutine acraneb2(ydml_phy_mf, klon, klev, kidia, kfdia, pzz)
 
   use parkind1, only: jpim, jprb
 
-  use model_physics_mf_mod , only : model_physics_mf_type
+  use model_physics_mf_mod, only: model_physics_mf_type
 
   implicit none
 

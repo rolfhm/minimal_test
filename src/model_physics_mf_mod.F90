@@ -1,12 +1,12 @@
-MODULE MODEL_PHYSICS_MF_MOD
-  USE YOMPHY3  , ONLY : TPHY3
+module model_physics_mf_mod
+  use yomphy3  , only : tphy3
 
-  IMPLICIT NONE
+  implicit none
   
-  TYPE MODEL_PHYSICS_MF_TYPE
+  type model_physics_mf_type
 
-  TYPE(TPHY3)   :: YRPHY3 !! radiation-related parameters
+  type(tphy3)   :: yrphy3 !! radiation-related parameters
 
-  END TYPE MODEL_PHYSICS_MF_TYPE
+  end type model_physics_mf_type
 
-END MODULE MODEL_PHYSICS_MF_MOD
+end module model_physics_mf_mod
